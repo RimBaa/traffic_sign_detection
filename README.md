@@ -2,7 +2,7 @@
 
 This project is part of the bachelor thesis "Traffic Sign Detection for Model Cars using the Histogram of Oriented Gradients and Support Vector Machines".
 
-##Prerequisites
+## Prerequisites
 
 - OpenCV 3.2
 - Python 2.7
