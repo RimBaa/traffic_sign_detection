@@ -17,11 +17,9 @@ labels = []
 
 dic_speed = {"nosign": 0, "30": 1, "50": 2, "60":3}
 
-def train_svm_num():
+def train_svm_num(directory):
     
     global features, labels, dic_speed
-    
-    directory = '/home/rima/Dokumente/BA/dataset/train'
     
     for category in dic_speed:
 
@@ -74,7 +72,7 @@ def train():
     
     global features, labels
     dirpath = os.getcwd()
-    pathmodel = "/model/svm_number.xml"
+    pathmodel = "/svm_number.xml"
     filename = dirpath+pathmodel
   
 
@@ -116,5 +114,9 @@ def train():
 
   
 if __name__ == '__main__':
-	train_svm_num()
+    dirpath = os.getcwd()
+    path_data = "/train_data"
+    directory = dirpath+path_data
+
+    train_svm_num(directory)
 

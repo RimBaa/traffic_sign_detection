@@ -8,7 +8,7 @@ from sklearn.metrics import classification_report,accuracy_score
 import numpy as np
 import cv2
 import os
-import preprocess
+import image_process
 import matplotlib.pyplot as plt
 
 features = []
@@ -16,11 +16,10 @@ labels = []
 
 dic_shapes = { "nosign": 0, "30": 1, "50":2, "60":3, "stop": 4, "priority": 5, "yield": 6}
 
-def train_svm1():
+def train_svm1(directory):
     
     global categories, features, labels, dic_shapes
     
-    directory = '/home/rima/Dokumente/BA/dataset/train4'
     
     for category in dic_shapes:
        path = os.path.join(directory,category)
@@ -37,19 +36,19 @@ def train_svm1():
 #            plt.show() 
             
             # segmentation
-            masks = preprocess.color_segmentation(rgb)
+            masks = image_process.color_segmentation(rgb)
             
             if category != "priority":
-                statsListR,roiListR = preprocess.get_roi(masks[0],rgb, 1)
+                statsListR,roiListR = image_process.get_roi(masks[0],rgb, 1)
                 
             if category == "priority" or category == "nosign" : 
-                statsListY,roiListY = preprocess.get_roi(masks[1],rgb, 2)
+                statsListY,roiListY = image_process.get_roi(masks[1],rgb, 2)
             
             print(image)
             
 #           for training use only the first roi in list
             if len(roiListR) > 0:
-                feature = preprocess.hogFeature(roiListR[0],(60,60), 8,(5,5), (2,2), 'L2')
+                feature = image_process.hogFeature(roiListR[0],(60,60), 8,(5,5), (2,2), 'L2')
                 if feature is not None:  
 
                     features.append(feature)
@@ -59,7 +58,7 @@ def train_svm1():
 
 #            
             if len(roiListY) > 0:
-                 feature = preprocess.hogFeature(roiListY[0],(60,60), 8,(5,5), (2,2), 'L2')
+                 feature = image_process.hogFeature(roiListY[0],(60,60), 8,(5,5), (2,2), 'L2')
                  if feature is not None: 
 
                     features.append(feature)
@@ -79,7 +78,7 @@ def train():
     global features, labels
 
     dirpath = os.getcwd()
-    pathmodel = "/model/svm1.xml"
+    pathmodel = "/svm1.xml"
     filename = dirpath+pathmodel
 
 
@@ -123,5 +122,8 @@ def train():
 
    
 if __name__ == '__main__':
-	train_svm1()
+    dirpath = os.getcwd()
+    path_data = "/train_data"
+    directory = dirpath+path_data
 
+    train_svm1(directory)

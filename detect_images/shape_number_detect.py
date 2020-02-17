@@ -20,10 +20,6 @@ categories = ["nosign", "30", "50", "60", "stop", "priority", "yield" ]
 dic_shapes = { "nosign": 0, "30": 1, "50": 2, "60": 3, "stop": 4, "priority": 5, "yield": 6}
 
 
-
-#svm1 = "/home/rima/Dokumente/BA/github/final_version/model/svm1.xml"
-#svm2 = "/home/rima/Dokumente/BA/github/final_version/model/svm_number.xml"
-
 def detect(rgb):
 #   for validation
     predictList = []            
@@ -88,10 +84,6 @@ def detect(rgb):
     valid(predictList, num)
         
 
-
-
-
-
              
 def confusion_mat():
     
@@ -119,22 +111,18 @@ if __name__ == '__main__':
 
     if len(sys.argv) > 1:
     	path_images = sys.argv[1]
-    else:
-        path_images = "/home/rima/Dokumente/BA/Dataset/validate"
-    
+   
     	# path to the models
     	dirpath = os.getcwd()
     	pathmodel1 = "/model/svm1.xml"
     	pathmodel2 = "/model/svm_number.xml"
     	svm1_path = dirpath+pathmodel1
     	svm2_path = dirpath+pathmodel2
-        print(svm1_path)
         
         svm1 = cv2.ml.SVM_load(svm1_path)
         svm_num = cv2.ml.SVM_load(svm2_path)
-        3
+
     	for category in categories:
-#        category = categories[3]
             path = os.path.join(path_images,category)
         
             for image in os.listdir(path):
@@ -158,8 +146,8 @@ if __name__ == '__main__':
         print("%s secondes" % (time.time() - start))
         
 		
-#    else:
-#	print("please enter the path to a dataset")
+    else:
+	print("please enter the path to a dataset")
 
   
         
