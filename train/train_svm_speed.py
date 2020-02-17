@@ -21,7 +21,7 @@ def train_svm_num():
     
     global features, labels, dic_speed
     
-    directory = '/home/rima/Dokumente/BA/dataset/train4'
+    directory = '/home/rima/Dokumente/BA/dataset/train'
     
     for category in dic_speed:
 

@@ -12,7 +12,7 @@ import rospy
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 import time
-
+import os
 import cv2
 import image_process
 import numpy as np
@@ -20,10 +20,14 @@ import numpy as np
 categories = ["nosign", "30", "50", "60", "stop", "priority", "yield" ]
 dic_shapes = { "nosign": 0, "30": 1, "50": 2, "60": 3, "stop": 4, "priority": 5, "yield": 6}
 
-svm1_path = "/home/rima/autominy/catkin_ws/src/detect_traffic_sign/model/svm1.xml"
-svm2_path = "/home/rima/autominy/catkin_ws/src/detect_traffic_sign/model/svm_number.xml"
 
 class detect_traffic_sign:
+# path to the trained svm models
+    dirpath = os.getcwd()
+    pathmodel1 = "/src/detect_traffic_sign/model/svm1.xml"
+    pathmodel2 = "/src/detect_traffic_sign/model/svm_number.xml"
+    svm1_path = dirpath+pathmodel1
+    svm2_path = dirpath+pathmodel2
     
     svm_shape = cv2.ml.SVM_load(svm1_path)
     svm_num = cv2.ml.SVM_load(svm2_path)

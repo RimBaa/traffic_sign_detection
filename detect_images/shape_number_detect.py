@@ -12,15 +12,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 from validate import valid, return_validation
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, balanced_accuracy_score, f1_score, accuracy_score, precision_score, recall_score 
+
+import sys
 
 categories = ["nosign", "30", "50", "60", "stop", "priority", "yield" ]
 dic_shapes = { "nosign": 0, "30": 1, "50": 2, "60": 3, "stop": 4, "priority": 5, "yield": 6}
 
 
 
-svm1 = "/home/rima/Dokumente/BA/github/final_version/model/svm1.xml"
-svm2 = "/home/rima/Dokumente/BA/github/final_version/model/svm_number.xml"
+#svm1 = "/home/rima/Dokumente/BA/github/final_version/model/svm1.xml"
+#svm2 = "/home/rima/Dokumente/BA/github/final_version/model/svm_number.xml"
 
 def detect(rgb):
 #   for validation
@@ -95,7 +97,13 @@ def confusion_mat():
     
     cm = confusion_matrix(signs,predictListSigns, labels = [0,1,2,3,4,5,6])
     print(cm)
-                    
+
+    f1 = f1_score(signs, predictListSigns, average = 'weighted')
+    f1mac = f1_score(signs, predictListSigns, average = 'macro')
+    print(f1, f1mac)
+
+    
+             
 def drawBoundingBox(roi, trafficSign, rgb):
     
     sign = int(trafficSign)
@@ -106,37 +114,53 @@ def drawBoundingBox(roi, trafficSign, rgb):
 
                    
 if __name__ == '__main__':
-    
-    start = time.time()
-    
-    svm1 = cv2.ml.SVM_load(svm1)
-    svm_num = cv2.ml.SVM_load(svm2)
-    
-    category = categories[5]
 
-    directory = '/home/rima/Dokumente/BA/dataset/validate'
-    
-    path = os.path.join(directory,category)  
+    start = time.time()	
 
-    for image in os.listdir(path):
-                  
-        print("processing image " + image)
+    if len(sys.argv) > 1:
+    	path_images = sys.argv[1]
+    else:
+        path_images = "/home/rima/Dokumente/BA/Dataset/validate"
+    
+    	# path to the models
+    	dirpath = os.getcwd()
+    	pathmodel1 = "/model/svm1.xml"
+    	pathmodel2 = "/model/svm_number.xml"
+    	svm1_path = dirpath+pathmodel1
+    	svm2_path = dirpath+pathmodel2
+        print(svm1_path)
         
-        bgr = cv2.imread(os.path.join(path, image))           
-        rgb = cv2.cvtColor(bgr,cv2.COLOR_BGR2RGB) 
-
-        detect(rgb)
+        svm1 = cv2.ml.SVM_load(svm1_path)
+        svm_num = cv2.ml.SVM_load(svm2_path)
+        3
+    	for category in categories:
+#        category = categories[3]
+            path = os.path.join(path_images,category)
         
-    
-
-    #validation
-    correctDetected, detectedSigns, trueSigns, predictListSigns,signs = return_validation()    
-    precision = (correctDetected / detectedSigns) * 100
-    recall = (correctDetected / trueSigns) * 100
-    print(correctDetected, trueSigns, detectedSigns)
-    print(precision, recall) 
-
-    confusion_mat()    
+            for image in os.listdir(path):
+        		          
+        		print("processing image " + image)
+        		
+        		bgr = cv2.imread(os.path.join(path, image))           
+        		rgb = cv2.cvtColor(bgr,cv2.COLOR_BGR2RGB) 
         
+        		detect(rgb)
         
-    print("%s secondes" % (time.time() - start))                            
+        #validation
+        correctDetected, detectedSigns, trueSigns, predictListSigns,signs = return_validation()    
+        precision = (correctDetected / detectedSigns) * 100
+        recall = (correctDetected / trueSigns) * 100
+        print(correctDetected, trueSigns, detectedSigns)
+        print(precision, recall) 
+
+        confusion_mat()    
+    	
+        print("%s secondes" % (time.time() - start))
+        
+		
+#    else:
+#	print("please enter the path to a dataset")
+
+  
+        
+                            
