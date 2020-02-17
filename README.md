@@ -17,20 +17,20 @@ This project is part of the bachelor thesis "Traffic Sign Detection for Model Ca
 - detect images
 The folder "detect_images" contains the code that has been used to validate the implemented system using the images of a created dataset.
 To run the code a dataset of the form
-.
-├── ...
-├── dataset
-│   ├── 30
-│   ├── 50
-│   ├── 60
-│   ├── priority
-│   ├── stop
-│   ├── yield
-│   └──  nosign
-└── ...
-
+```	.
+	├── ...
+	├── dataset
+	│   ├── 30
+	│   ├── 50
+	│   ├── 60
+	│   ├── priority
+	│   ├── stop
+	│   ├── yield
+	│   └──  nosign
+	└── ...
+```
 must exist. The path to that dataset needs to be passed as argument.
- - ```python shape_number_detect.py /.../dataset 
+ - ```python shape_number_detect.py /.../dataset ```
 
 -train
 The folder "train" contains the files to train both support vector machines, the file for processing the images and a folder containing the data that has been used for training.
