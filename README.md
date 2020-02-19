@@ -40,8 +40,7 @@ The folder "train" contains the files to train both support vector machines, the
 No extra parameters are needed to run the code.
 
 ## ROS package detect_traffic_sign
-The second folder "detect_traffic_sign" is the ROS package that has been created.
-Both folders contain the trained support vector machines and all files needed to start the program.
+The folder "detect_traffic_sign" is the ROS package that has been created.
 
 # Instructions on how to use the ROS package
 1. add the ROS package to an exisiting ROS Workspace
