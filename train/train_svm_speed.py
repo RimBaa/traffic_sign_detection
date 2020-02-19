@@ -96,7 +96,7 @@ def train():
     svm.setKernel(cv2.ml.SVM_INTER)
 
     svm.setC(10)
-
+# gamma is only necessary for the rgb kernel
     svm.setGamma(0.01)
      
     svm.train(x_train, cv2.ml.ROW_SAMPLE, y_train)
