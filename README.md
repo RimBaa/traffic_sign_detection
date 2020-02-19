@@ -11,6 +11,8 @@ This project is part of the bachelor thesis "Traffic Sign Detection for Model Ca
 - Matplotlib 2.2.4
 - scikit-image 0.14.5
 - CVBridge
+- ROS melodic
+- autominy project
 
 
 # System structure
@@ -48,4 +50,4 @@ Both folders contain the trained support vector machines and all files needed to
 3. build the package with catkin build
 4. start the program
    ```rosrun detect_traffic_sign ros_detect_traffic_sign.py```
-3. To see the results start either rviz or rqt in a new terminal. The images with the found traffic signs will be published to the Topic "traffic_sign"
+3. To see the results start either rviz or rqt in a new terminal. The images with the found traffic signs will be published to the topic "traffic_sign".
