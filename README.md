@@ -1,8 +1,8 @@
-## Traffic Sign Detection
+# Traffic Sign Detection
 
 This project is part of the bachelor thesis "Traffic Sign Detection for Model Cars using the Histogram of Oriented Gradients and Support Vector Machines".
 
-## Prerequisites
+# Prerequisites
 
 - OpenCV 3.2
 - Python 2.7
@@ -13,9 +13,9 @@ This project is part of the bachelor thesis "Traffic Sign Detection for Model Ca
 - CVBridge
 
 
-## System structure
+# System structure
 
-# detect images
+## detect images
 The folder "detect_images" contains the code that has been used to validate the implemented system using the images of a created dataset.
 To run the code a dataset of the form
 ```	.
@@ -33,15 +33,15 @@ To run the code a dataset of the form
 must exist. The path to that dataset needs to be passed as argument.
    ```python shape_number_detect.py /.../dataset ```
 
-# train
+## train
 The folder "train" contains the files to train both support vector machines, the file for processing the images and a folder containing the data that has been used for training.
 No extra parameters are needed to run the code.
 
-# ROS package detect_traffic_sign
+## ROS package detect_traffic_sign
 The second folder "detect_traffic_sign" is the ROS package that has been created.
 Both folders contain the trained support vector machines and all files needed to start the program.
 
-##Instructions on how to use the ROS package
+# Instructions on how to use the ROS package
 1. add the ROS package to an exisiting ROS Workspace
 2. go to your Workspace
    ```cd ../catkin```
