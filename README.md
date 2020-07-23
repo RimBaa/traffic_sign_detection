@@ -61,6 +61,6 @@ The folder "detect_traffic_sign" is the ROS package that has been created.
 
 ## Images
 
-<img src="https://user-images.githubusercontent.com/46397845/88280803-cbaedb00-cce6-11ea-8a73-31783e524b0d.jpg" height="700" width="400">
-<img src="https://user-images.githubusercontent.com/46397845/88280795-c94c8100-cce6-11ea-9acf-bff941424a9f.jpg" height="700" width="400">
-<img src="https://user-images.githubusercontent.com/46397845/88280797-ca7dae00-cce6-11ea-9547-81f260bf6f4a.jpg" height="700" width="400">
+<img src="https://user-images.githubusercontent.com/46397845/88280803-cbaedb00-cce6-11ea-8a73-31783e524b0d.jpg">
+<img src="https://user-images.githubusercontent.com/46397845/88280795-c94c8100-cce6-11ea-9acf-bff941424a9f.jpg">
+<img src="https://user-images.githubusercontent.com/46397845/88280797-ca7dae00-cce6-11ea-9547-81f260bf6f4a.jpg">
