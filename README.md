@@ -1,6 +1,14 @@
 # Traffic Sign Detection
 
 This project is part of the bachelor thesis "Traffic Sign Detection for Model Cars using the Histogram of Oriented Gradients and Support Vector Machines".
+The trained model is able to detect six German traffic signs:
+
+- speed limit 30 km/h
+- speed limit 50 km/h
+- speed limit 60 km/h
+- stop
+- priority
+- yield
 
 # Prerequisites
 
@@ -50,3 +58,9 @@ The folder "detect_traffic_sign" is the ROS package that has been created.
 4. start the program
    ```rosrun detect_traffic_sign ros_detect_traffic_sign.py```
 3. To see the results start either rviz or rqt in a new terminal. The images with the found traffic signs will be published to the topic "traffic_sign".
+
+## Images
+
+<img src="https://user-images.githubusercontent.com/46397845/88280803-cbaedb00-cce6-11ea-8a73-31783e524b0d.jpg" height="700" width="400">
+<img src="https://user-images.githubusercontent.com/46397845/88280795-c94c8100-cce6-11ea-9acf-bff941424a9f.jpg" height="700" width="400">
+<img src="https://user-images.githubusercontent.com/46397845/88280797-ca7dae00-cce6-11ea-9547-81f260bf6f4a.jpg" height="700" width="400">
